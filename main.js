@@ -2,17 +2,45 @@ const boxContainer = document.querySelector('.box-container');
 const winnerDiv = document.querySelector('.winner-div');
 const restartBtn = document.querySelector('.restart-btn');
 const resetBtn = document.querySelector('.reset-btn');
-const user1 = document.querySelector('.user1');
-const user2 = document.querySelector('.user2');
-let player1 = 0,player2 = 0;
+const userScore1 = document.querySelector('.user-score-1');
+const userScore2 = document.querySelector('.user-score-2');
+const playerNamesDiv = document.querySelector(".player-names-div");
+const gameDiv = document.querySelector(".game-div");
+const startGameBtn = document.querySelector(".start-game-btn");
+const withoutNamesbtn = document.querySelector(".without-names-btn");
+const playerName1 = document.querySelector(".player_name_1");
+const playerName2 = document.querySelector(".player_name_2");
+const player1 = document.querySelector(".player_1");
+const player2 = document.querySelector(".player_2");
+let initialScore1 = 0,initialScore2 = 0;
 let states = [1,0,1,0,1,0,0,1,0];
 let flag = true;
 
+// Start Game without names
+withoutNamesbtn.addEventListener('click', () => {
+   playerNamesDiv.style.display = "none";
+   gameDiv.style.display = "flex";
+});
+
+// Start game after typing names
+startGameBtn.addEventListener('click', () => {
+   if(playerName1.value == "" || playerName2.value == "") {
+      alert("Enter both players names or click Without Names button");
+   }
+   else {
+      player1.textContent = playerName1.value;
+      player2.textContent = playerName2.value;
+      playerNamesDiv.style.display = "none";
+      gameDiv.style.display = "flex";
+   }
+});
+
 // Reset
 resetBtn.addEventListener('click', () => {
-   let confirmAction = confirm("Are you sure you want to reset the game ");
+   let confirmAction = confirm("Are you sure you want to reset the game, scores will be reset too");
    if(confirmAction) {
       resetGame();
+      resetScores();
    }
 });
 
@@ -47,6 +75,7 @@ function setValue(currentDiv) {
          states[id] = "X";
          flag = !flag;
          checkColor(currentDiv);
+         checkForTie();
          checkWinner(!flag);
       }
    }
@@ -56,10 +85,10 @@ function setValue(currentDiv) {
          states[id] = "O";
          flag = !flag;
          checkColor(currentDiv);
+         checkForTie();
          checkWinner(!flag);
       }
    }
-   checkForTie();
 }
 
 // Disable boxes
@@ -90,7 +119,7 @@ function checkWinner(type) {
    for(let x = 0; x < winIndexes.length; x++){
       let [a,b,c] = winIndexes[x];
       if(states[a] == states[b] && states[b] == states[c]) {
-         let winner = type ? "Winner is X": "Winner is O";
+         let winner = type ? `Winner is ${player1.textContent}`: `Winner is ${player2.textContent}`;
          winnerDiv.innerText = winner;
          winnerBoxColor(winIndexes[x]);
          disableGame();
@@ -107,7 +136,6 @@ function winnerBoxColor(index) {
       const winBoxes = document.getElementById(index[i]);
       winBoxes.style.color = "lightsalmon";
       winBoxes.style.fontWeight = "bold";
-      winBoxes.style.fontSize = "50px";
    }
 }
 
@@ -127,11 +155,10 @@ function checkForTie() {
 
 //Updating Scores
 function scoreUpdate(playerType) {
-   (playerType) ? player1++ : player2++;
-   user1.innerText = player1;
-   user2.innerText = player2;
+   (playerType) ? initialScore1++ : initialScore2++;
+   userScore1.innerText = initialScore1;
+   userScore2.innerText = initialScore2;
 }
-
 
 // Reset function
 function resetGame() {
@@ -140,9 +167,16 @@ function resetGame() {
       box.innerText = "";
       box.style.backgroundColor = "#1f1f1f";
       box.style.fontWeight = "normal";
-      box.style.fontSize = "45px";
    });
    states = [1,0,1,0,1,0,0,1,0];
    flag = true;
    winnerDiv.innerText = "";
-} 
+}
+
+//Reset Scores
+function resetScores() {
+   initialScore1 = 0;
+   initialScore2 = 0;
+   userScore1.innerText = initialScore1;
+   userScore2.innerText = initialScore2;
+}

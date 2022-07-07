@@ -4,6 +4,7 @@
    box-sizing: border-box;
    font-family: sans-serif;
    letter-spacing: 1px;
+   text-transform: capitalize;
 }
 
 body {
@@ -19,8 +20,56 @@ body {
 }
 
 .container h1 {
+   font-size: 3rem;
    margin: 12px;
    color: lightgrey;
+}
+
+.player-names-div {
+   display: flex;
+   min-height: 50vh;
+   flex-direction: column;
+   align-items: start;
+   justify-content: start;
+   margin: 100px;
+}
+
+.player-names-div label {
+   color: lightgrey;
+   margin: 5px;
+   font-size: 1.5rem;
+}
+
+.player-names-div input[type="text"] {
+   margin: 5px;
+   font-size: 1.5rem;
+   padding: 4px;
+   outline: none;
+   font-weight: normal;
+}
+
+.player-names-div input[type="submit"] {
+   margin: 20px 10px;
+   border: none;
+   padding: 10px;
+   font-size: 1.2rem;
+   color: lightblue;
+   border-radius: 10px;
+   background-color: black;
+   box-shadow: 0 2px 2px rgb(57,255,20), 0 2px 2px rgb(57,255,20);
+   transition: 0.3s all ease-in;
+}
+
+.player-names-div input[type="submit"]:hover {
+   box-shadow: 0 2px 2px cyan, 0 2px 2px cyan;
+} 
+
+/* Game starts here */
+.game-div {
+   display: none;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }
 
 .score-div {
@@ -29,38 +78,49 @@ body {
 }
 
 .players {
+   text-align: center;
    font-size: 1.2rem;
    font-weight: bold;
 }
 
-.score-div .scores {
-   margin: 5px;
+table {
+   width: 180px;
+   margin: auto;
 }
 
-.players .user1 {
+.score-div .scores {
+   margin: 8px;
+}
+
+.players .user-score-1, .user-score-2 {
+   font-size: 1.4rem;
+   padding: 8px;
+}
+
+.players .user-score-1 {
    color: #ff0000;
 }
 
-.players .user2 {
+.players .user-score-2 {
    color: #00ff00;
 }
 
 .box-container {
    display: flex;
    flex-wrap: wrap;
-   height: 390px;
-   width: 390px;
-   margin-top: 30px;
+   height: 300px;
+   width: 300px;
+   margin: 30px;
 }
 
 .box {
-   width: 130px;
-   height: 130px;
+   width: 100px;
+   height: 100px;
    border: 5px outset lightgrey;
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 45px;
+   font-size: 35px;
 }
 
 .box-1, .box-2, .box-3 {
@@ -80,7 +140,9 @@ body {
 }
 
 .buttons {
-   margin: 15px 0;
+   margin: 5px;
+   display: flex;
+   justify-content: center;
 }
 
 .winner-div {
@@ -88,10 +150,11 @@ body {
    font-size: 1.4rem;
    color: lightsalmon;
    transition: 0.3 color ease-in;
+   text-align: center;
 }
 
 .btn {
-   margin: 5px;
+   margin: 8px;
    padding: 10px 18px;
    background-color: rgba(0,0,0,0.9);
    color: white;
@@ -107,26 +170,29 @@ body {
    box-shadow: 0 2px 2px cyan, 0 2px 2px cyan;
 }
 
-@media screen and (max-width: 400px) {
-
+/* Media query for phones */
+@media screen and (max-width: 500px) {
    .box-container {
-      height: 300px;
-      width: 300px;
-      margin-top: 50px;}
+      margin: 15px;
+   }
+
+   .container h1 {
+      font-size: 2rem;
+   }
 
    .box {
-      width: 100px;
-      height: 100px;
-      font-size: 30px;  
+      font-size: 30px;
    }
 
    .btn {
-      padding: 6px 14px;
+      margin: 5px;
+      padding: 8px 14px;
       letter-spacing: 1px;
       font-size: 1.1rem;
    }
 
    .winner-div {
       font-size: 1.2rem;
+      margin-top: 5px;
    }
 }

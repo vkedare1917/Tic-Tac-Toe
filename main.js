@@ -37,7 +37,7 @@ startGameBtn.addEventListener('click', () => {
 
 // Reset
 resetBtn.addEventListener('click', () => {
-   let confirmAction = confirm("Are you sure you want to reset the game, scores will be reset too");
+   const confirmAction = confirm("Are you sure you want to reset the game, scores will be reset too");
    if(confirmAction) {
       resetGame();
       resetScores();
@@ -46,7 +46,10 @@ resetBtn.addEventListener('click', () => {
 
 // Restart
 restartBtn.addEventListener('click', () => {
-   window.location.reload();
+   const confirmAction = confirm("Are you sure you want to restart the game");
+   if(confirmAction) {
+      window.location.reload();
+   }
 });
 
 // Main function
@@ -68,7 +71,7 @@ function checkColor(div) {
 
 // Changing value to X or O
 function setValue(currentDiv) {
-   let id = currentDiv.id;
+   const id = currentDiv.id;
    if(flag) {
       if (states[id] == 1 || states[id] == 0) {
          currentDiv.innerText = "X";

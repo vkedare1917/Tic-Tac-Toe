@@ -11,6 +11,7 @@ body {
    background-color: #1f1f1f;
 }
 
+/* Main div */
 .container {
    min-height: 100vh;
    display: flex;
@@ -25,13 +26,14 @@ body {
    color: lightgrey;
 }
 
+/* Players div */
 .player-names-div {
    display: flex;
    min-height: 50vh;
    flex-direction: column;
    align-items: start;
    justify-content: start;
-   margin: 100px;
+   margin: 20px;
 }
 
 .player-names-div label {
@@ -105,6 +107,7 @@ table {
    color: #00ff00;
 }
 
+/* Blocks */
 .box-container {
    display: flex;
    flex-wrap: wrap;
@@ -139,18 +142,19 @@ table {
    border-left: none;
 }
 
-.buttons {
-   margin: 5px;
-   display: flex;
-   justify-content: center;
-}
-
 .winner-div {
    margin-top: 10px;
    font-size: 1.4rem;
    color: lightsalmon;
    transition: 0.3 color ease-in;
    text-align: center;
+}
+
+/* buttons */
+.buttons {
+   margin: 5px;
+   display: flex;
+   justify-content: center;
 }
 
 .btn {
@@ -182,6 +186,18 @@ table {
 
    .box {
       font-size: 30px;
+   }
+
+   .player-names-div input[type="text"],.player-names-div label {
+      font-size: 1.1rem;
+      width: 65%;
+      padding: 4px;
+   }
+
+   .player-names-div input[type="submit"] {
+      font-size: 0.95rem;
+      padding: 7px;
+      margin: 20px 2px;
    }
 
    .btn {

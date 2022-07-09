@@ -10,20 +10,25 @@
 </head>
 
 <body>
+   <!-- Main Container -->
    <div class="container">
       <h1>tic tac toe</h1>
 
+      <!-- Player names -->
       <div class="player-names-div">
          <label>player_1</label>
          <input type="text" class="player_name_1">
          <label>player_2</label>
          <input type="text" class="player_name_2">
+
+         <!-- Start game buttons -->
          <div class="start-game-btns">
             <input type="submit" value="start game" class="start-game-btn">
             <input type="submit" value="without names" class="without-names-btn">
          </div>
       </div>
 
+      <!-- Game div -->
       <div class="game-div">
          <div class="score-div">
             <h2 class="scores">scores:</h2>
@@ -38,6 +43,8 @@
                </tr>
             </table>
          </div>
+
+         <!-- Game blocks -->
          <div class="box-container">
             <div class="box box-1" id="0"></div>
             <div class="box box-2" id="1"></div>
@@ -49,10 +56,14 @@
             <div class="box box-8" id="7"></div>
             <div class="box box-9" id="8"></div>
          </div>
+
+         <!-- Reset & Restart buttons -->
          <div class="buttons">
             <button class="btn reset-btn">reset</button>
             <button class="btn restart-btn">restart</button>
          </div>
+
+         <!-- Div to show winner -->
          <div class="winner-div"></div>
       </div>
    </div>
